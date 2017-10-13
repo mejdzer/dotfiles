@@ -10,3 +10,4 @@ alias h5bp='git clone git://github.com/h5bp/html5-boilerplate.git h5bp && cd h5b
 alias clearlogs="sudo rm -rf /private/var/log/asl/*"
 alias eali="vim -O ~/.dotfiles/zsh/aliases.zsh ~/.dotfiles/git/aliases.zsh"
 alias vali="cat ~/.dotfiles/zsh/aliases.zsh ~/.dotfiles/git/aliases.zsh"
+alias weather="curl -4 wttr.in/New_York"
