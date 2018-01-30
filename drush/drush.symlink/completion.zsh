@@ -13,6 +13,8 @@
 #   source /path/to/your/drush.complete.sh
 
 # Ensure drush is available.
+autoload bashcompinit
+bashcompinit
 command -v drush >/dev/null || alias drush &> /dev/null || return
 
 __drush_ps1() {

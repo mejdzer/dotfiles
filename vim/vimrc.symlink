@@ -4,64 +4,68 @@
 " use the LDFLAGS as necessary (OS X Lion)
 " $ ./configure --enable-multibyte --with-features=huge --with-compiledby=mryan@sankynet.com --enable-gnome-check --enable-perlinterp --enable-pythoninterp --enable-rubyinterp --enable-cscope
 " $ LDFLAGS=-L/usr/lib ./configure --enable-multibyte --with-features=huge --with-compiledby=mryan@sankynet.com --enable-gnome-check --enable-perlinterp --enable-pythoninterp --enable-rubyinterp --enable-cscope
-" Vundle {{{
-set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Vim-Plug {{{
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle required!
-Bundle 'gmarik/vundle'
+call plug#begin('~/.vim/bundle')
 
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'AutoClose'
-Bundle 'jQuery'
-Bundle 'vim-json-bundle'
-Bundle 'YankRing.vim'
-Bundle "snipmate-snippets"
-Bundle "PDV--phpDocumentor-for-Vim"
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/FuzzyFinder'
+Plug 'vim-scripts/AutoClose'
+Plug 'vim-scripts/jQuery'
+Plug 'vim-scripts/vim-json-bundle'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'vim-scripts/snipmate-snippets'
+Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'
 
 " original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-liquid'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'godlygeek/tabular'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'ervandew/supertab'
-Bundle 'mrevd/vim-insert-image'
-Bundle 'matthias-guenther/hammer.vim'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'rizzatti/dash.vim'
+Plug 'junegunn/vim-plug'
+Plug 'tpope/vim-fugitive'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-liquid'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'godlygeek/tabular'
+Plug 'flazz/vim-colorschemes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'ervandew/supertab'
+Plug 'mrevd/vim-insert-image'
+Plug 'matthias-guenther/hammer.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'rizzatti/dash.vim'
 if executable('ctags')
-  Bundle 'majutsushi/tagbar'
+  Plug 'majutsushi/tagbar'
 endif
-Bundle 'chriskempson/base16-vim'
-Plugin 'kchmck/vim-coffee-script'
-Bundle 'groenewege/vim-less'
-"}}}
+Plug 'chriskempson/base16-vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'groenewege/vim-less'
+
+call plug#end()
+" }}}
 
 " VIM behaviour {{{
 let mapleader=","
+set modifiable
 set showmode
 set nowrap
 set tabstop=2
@@ -155,6 +159,7 @@ set lazyredraw
 set laststatus=2
 set cmdheight=2
 set title
+let &t_Co=256
 
 " cursor appearance in insert mode
 let &t_SI = "\<Esc>[5 q"
@@ -205,10 +210,20 @@ let g:ctrlp_working_path_mode = 'rw'
 let g:ctrlp_show_hidden = 1
 "}}}
 
-" Powerline {{{
- let g:Powerline_symbols = 'fancy'
+" Airline {{{
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_theme='tomorrow'
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
 "}}}
-
 "}}}
 
 " Markdown {{{
