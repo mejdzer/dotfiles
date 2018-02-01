@@ -276,6 +276,10 @@ let g:gist_open_browser_after_post = 1
 "    #!/bin/bash
 "    open http://php.net/"$*" with K
 autocmd FileType php set keywordprg=~/.vim/phpdoc.sh
+
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 "}}}
 
 " Misc mappings {{{
