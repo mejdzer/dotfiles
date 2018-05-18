@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Quickly remove the host fingerprint from ~/.ssh/known_hosts file.
+#
+sed -i '' -e $1d ~/.ssh/known_hosts
