@@ -59,6 +59,7 @@ endif
 Plug 'chriskempson/base16-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'groenewege/vim-less'
+Plug 'qbbr/vim-twig'
 
 call plug#end()
 " }}}
