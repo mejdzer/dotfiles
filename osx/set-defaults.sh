@@ -74,3 +74,6 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Show full path in the title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+
+# Smooth fonts (specially helpful on non-retina dispalys)
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
