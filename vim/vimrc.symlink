@@ -282,6 +282,9 @@ autocmd FileType php set keywordprg=~/.vim/phpdoc.sh
 if $TMUX == ''
   set clipboard+=unnamed
 endif
+
+" SnipMate parser upgrade
+let g:snipMate = { 'snippet_version' : 1 }
 "}}}
 
 " Misc mappings {{{

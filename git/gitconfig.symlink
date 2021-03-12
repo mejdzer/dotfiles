@@ -1,6 +1,9 @@
 [user]
 	name  = Peter Major
-	email = pmajor@sankynet.com
+	email = pmajor@sankyinc.com
+  signingkey = 76AE2FEF5714ACE5
+[commit]
+  gpgsign = true
 [credential]
 	helper = osxkeychain
 [color]
